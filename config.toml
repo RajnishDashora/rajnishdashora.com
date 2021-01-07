@@ -6,6 +6,7 @@ theme = "soho"
 
 summarylength = 10
 enableEmoji = true
+publishDir = "docs"
 
 [params]
 author = "Rajnish Dashora"
