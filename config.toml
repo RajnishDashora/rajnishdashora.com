@@ -1,4 +1,4 @@
-baseURL = "https://example.com"
+baseURL = "https://rajnishdashora.com"
 title = "Rajnish Dashora"
 languageCode = "en-us"
 enableInlineShortcodes = true
@@ -31,17 +31,17 @@ customJs = ["js/blog.js"]
   [[params.socialIcons]]
   icon = "fa-linkedin"
   title = "Linkedin"
-  url = "#"
+  url = "https://www.linkedin.com/in/rajnish-dashora-89470242/"
 
   [[params.socialIcons]]
   icon = "fa-github"
   title = "GitHub"
-  url = "#"
+  url = "https://github.com/rajnishdashora"
 
   [[params.socialIcons]]
   icon = "fa-twitter"
   title = "Twitter"
-  url = "#"
+  url = "https://twitter.com/rajnishdashora"
 
 [menu]
 
