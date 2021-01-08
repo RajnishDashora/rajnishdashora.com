@@ -10,7 +10,7 @@ publishDir = "docs"
 
 [params]
 author = "Rajnish Dashora"
-description = "Hello!"
+description = "Hello."
 
 ## Set one of:
 # gravatar = "dashora.rajnish@gmail.com"
