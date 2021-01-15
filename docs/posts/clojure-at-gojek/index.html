@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="generator" content="Hugo 0.80.0" />
+
+  <title>Clojure at GOJEK &middot; Rajnish Dashora</title>
+
+  <meta name="description" content="" />
+
+  
+
+<meta itemprop="name" content="Clojure at GOJEK">
+<meta itemprop="description" content="&ldquo;You can reach a point with Lisp where, between the conceptual simplicity, the large libraries, and the customisation of macros, you are able to write only code that matters.">
+<meta itemprop="datePublished" content="2017-03-31T18:24:23+05:30" />
+<meta itemprop="dateModified" content="2017-03-31T18:24:23+05:30" />
+<meta itemprop="wordCount" content="413">
+
+
+
+<meta itemprop="keywords" content="" />
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Clojure at GOJEK"/>
+<meta name="twitter:description" content="&ldquo;You can reach a point with Lisp where, between the conceptual simplicity, the large libraries, and the customisation of macros, you are able to write only code that matters."/>
+
+
+<meta property="og:title" content="Clojure at GOJEK" />
+<meta property="og:description" content="&ldquo;You can reach a point with Lisp where, between the conceptual simplicity, the large libraries, and the customisation of macros, you are able to write only code that matters." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://rajnishdashora.com/posts/clojure-at-gojek/" />
+<meta property="article:published_time" content="2017-03-31T18:24:23+05:30" />
+<meta property="article:modified_time" content="2017-03-31T18:24:23+05:30" />
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type":"Person",
+      "@id": "https://rajnishdashora.com#author",
+      "name": "Rajnish Dashora",
+      "image": {
+        "@type":"ImageObject",
+        
+        "url": "https://rajnishdashora.com/images/rajnish.jpg"
+        
+      },
+      "description": "Hello."
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://rajnishdashora.com#website",
+      "url": "https://rajnishdashora.com",
+      "name": "Rajnish Dashora",
+      "description": "Hello.",
+      "publisher": {
+        "@id": "https://rajnishdashora.com#author"
+      },
+      "inLanguage": "en-us"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://rajnishdashora.com/posts/clojure-at-gojek/#webpage",
+      "url": "https://rajnishdashora.com/posts/clojure-at-gojek/",
+      "name": "Clojure at GOJEK",
+      "isPartOf": {
+        "@id": "https://rajnishdashora.com#website"
+      },
+      "about": {
+         "@id": "https://rajnishdashora.com#author"
+      },
+      "datePublished": "2017-03-31T18:24:23+05:30",
+      "dateModified": "2017-03-31T18:24:23+05:30",
+      "description": "\u0026ldquo;You can reach a point with Lisp where, between the conceptual simplicity, the large libraries, and the customisation of macros, you are able to write only code that matters.",
+      "inLanguage": "en-us",
+      "potentialAction": [
+        {
+          "@type": "ReadAction",
+          "target": [
+            "https://rajnishdashora.com/posts/clojure-at-gojek/"
+          ]
+        }
+      ]
+    },
+    {
+      "@type": "Article",
+      "isPartOf": {
+        "@id": "https://rajnishdashora.com/posts/clojure-at-gojek/#webpage"
+      },
+      "mainEntityOfPage": {
+        "@id": "https://rajnishdashora.com/posts/clojure-at-gojek/#webpage"
+      },
+      "headline": "Clojure at GOJEK",
+      "datePublished": "2017-03-31T18:24:23+05:30",
+      "dateModified": "2017-03-31T18:24:23+05:30",
+      "publisher": {
+        "@id": "https://rajnishdashora.com#author"
+      },
+      "keywords": [
+      ],
+      "articleSection": [
+      ],
+      "inLanguage": "en-us",
+      "author": {
+        "@type": "Person",
+        "name":  null 
+      },
+      "potentialAction": [
+        {
+          "@type": "CommentAction",
+          "name": "Comment",
+          "target": [
+            "https://rajnishdashora.com/posts/clojure-at-gojek/#comments"
+          ]
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/print.css"
+        media="print">
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/poole.css">
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/hyde.css">
+
+  
+
+
+  <link type="text/css" rel="stylesheet" href="/css/blog.css">
+
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700&display=swap">
+
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
+        integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk="
+        crossorigin="anonymous" />
+
+  <link rel="apple-touch-icon-precomposed"
+        sizes="144x144"
+        href="/apple-touch-icon-144-precomposed.png">
+
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  </head>
+<body>
+  <aside class="sidebar">
+  <div class="container">
+    <div class="sidebar-about">
+      
+        
+        <div class="author-image">
+          <img src="/images/rajnish.jpg" class="img-circle img-headshot center" alt="Profile Picture">
+        </div>
+        
+      
+
+      <h1>Rajnish Dashora</h1>
+
+      
+      <p class="lead">Hello.</p>
+      
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li>
+          <a href="https://rajnishdashora.com">Home</a>
+        </li>
+        <li>
+          <a href="/posts/">Posts</a>
+        </li><li>
+          <a href="/about/">About</a>
+        </li>
+      </ul>
+    </nav>
+
+    <section class="social-icons">
+      
+      <a href="https://www.linkedin.com/in/rajnish-dashora-89470242/" rel="me" title="Linkedin" target="_blank">
+        <i class="fab fa-linkedin" aria-hidden="true"></i>
+      </a>
+      
+      <a href="https://github.com/rajnishdashora" rel="me" title="GitHub" target="_blank">
+        <i class="fab fa-github" aria-hidden="true"></i>
+      </a>
+      
+      <a href="https://twitter.com/rajnishdashora" rel="me" title="Twitter" target="_blank">
+        <i class="fab fa-twitter" aria-hidden="true"></i>
+      </a>
+      
+    </section>
+  </div>
+</aside>
+
+
+  <main class="content container">
+  <div class="post">
+  <h1 class="title">Clojure at GOJEK</h1>
+  
+
+  <div class="post-date">
+    <time datetime="2017-03-31T18:24:23&#43;0530">Mar 31, 2017</time> &middot; 2 min read
+  </div>
+
+  <div>
+  <p><em>&ldquo;You can reach a point with Lisp where, between the conceptual simplicity, the large libraries, and the customisation of macros, you are able to write only code that matters. And, once there, you are able to achieve a very high degree of focus, such as you would when you are playing Go, or playing a musical instrument, or meditating. And then, as with those activities, there can be a feeling of elation that accompanies that mental state of focus.”  – Rich Hickey</em></p>
+<p>At GO-JEK, we believe in the fact that when you are not enjoying, you are not performing. Here we are with more then 15 million customers and more then 200K drivers who are the breath of GO-JEK, our heart runs with Clojure i.e. the allocations which happen through the journey of a booking for drivers by customers. Not just this we do have various services running on Clojure to serve our customers. We have more then 15 services offered primarily around logistics, payments and basic household requirements, we affect life in Indonesia on a daily basis.</p>
+<p>Such a high scale demands concurrency. Being a Lisp, Clojure gives you focus on the significant aspects of code. Speaking of advantages of Clojure, it is worth highlighting better language abstractions lead to a fewer accidental bugs and downtime. A functional programming language bundled with loads of benefits like laziness, immutability, code as data and the list goes on and on. More mature libraries and JVM based ecosystem makes Clojure a great language to play with. Better support for monitoring, debugging, profiling and generative testing catches many holes in implementation pre-emptively. With Clojure we have been able to achieve higher confidence while making changes, leading to faster release cycles.</p>
+<p>Clojure has an enthusiastic, fast-growing community which makes it a great experience working with. We have observed a higher level of satisfaction amongst the developers with us using Clojure. Development is isolated from real world to send or consume traffic along with feature toggles to selectively stop real effects and run experiments with life.</p>
+<p>We do face challenges with Clojure, such as longer warm up time, longer testing time, higher memory usages and sometimes a slower developer on-boarding time due to non-functional mind-sets. Though we are doing great with respect to what we have achieved with Clojure so far and looking forward to be able to keep it up and contribute back to the Clojure community which has been a great help through out the journey.</p>
+
+  </div>
+
+  <div>
+  <ul class="tags"></ul>
+</div>
+
+
+  <div class="share-buttons">
+  <a class="twitter-share-button"
+     href="#"
+     title="Share on Twitter"
+     data-url="https://rajnishdashora.com/posts/clojure-at-gojek/"
+     data-text="Clojure at GOJEK"><i class="fab fa-twitter"></i></a>
+
+  <a class="linkedin-share-button"
+     href="#"
+     title="Share on LinkedIn"
+     data-url="https://rajnishdashora.com/posts/clojure-at-gojek/"
+     data-text="Clojure at GOJEK"><i class="fab fa-linkedin-in"></i></a>
+
+  <a class="facebook-share-button"
+     href="#"
+     title="Share on Facebook"
+     data-url="https://rajnishdashora.com/posts/clojure-at-gojek/"
+     data-text="Clojure at GOJEK"><i class="fab fa-facebook"></i></a>
+
+  <a class="telegram-share-button"
+     href="#"
+     title="Share on Telegram"
+     data-url="https://rajnishdashora.com/posts/clojure-at-gojek/"
+     data-text="Clojure at GOJEK"><i class="fab fa-telegram"></i></a>
+
+  <a class="pinterest-share-button"
+     href="#"
+     title="Share on Pinterest"
+     data-url="https://rajnishdashora.com/posts/clojure-at-gojek/"
+     data-text="Clojure at GOJEK"><i class="fab fa-pinterest"></i></a>
+</div>
+
+</div>
+
+
+  </main>
+
+  <footer>
+  <div>
+    <p>
+      &copy; Rajnish Dashora 2021
+
+      &middot; <a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank">CC BY-SA 4.0</a>
+
+      
+    </p>
+  </div>
+</footer>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js"
+          integrity="sha256-MAgcygDRahs+F/Nk5Vz387whB4kSK9NXlDN3w58LLq0="
+          crossorigin="anonymous"></script>
+
+
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/soho.js"></script>
+
+  <script src="/js/blog.js"></script>
+
+  
+</body>
+</html>

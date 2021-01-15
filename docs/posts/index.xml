@@ -6,14 +6,23 @@
     <description>Recent content in Posts on Rajnish Dashora</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 07 Jan 2021 18:24:23 +0530</lastBuildDate><atom:link href="https://rajnishdashora.com/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 19 Aug 2017 12:01:43 +0530</lastBuildDate><atom:link href="https://rajnishdashora.com/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Init</title>
-      <link>https://rajnishdashora.com/posts/init/</link>
-      <pubDate>Thu, 07 Jan 2021 18:24:23 +0530</pubDate>
+      <title>Idea is to work together and craft — GO-JEK BOOTCAMP 2017</title>
+      <link>https://rajnishdashora.com/posts/gojek-bootcamp-2017/</link>
+      <pubDate>Sat, 19 Aug 2017 12:01:43 +0530</pubDate>
       
-      <guid>https://rajnishdashora.com/posts/init/</guid>
-      <description></description>
+      <guid>https://rajnishdashora.com/posts/gojek-bootcamp-2017/</guid>
+      <description>Military has boot camps, why a transport, logistics and payments company?</description>
+    </item>
+    
+    <item>
+      <title>Clojure at GOJEK</title>
+      <link>https://rajnishdashora.com/posts/clojure-at-gojek/</link>
+      <pubDate>Fri, 31 Mar 2017 18:24:23 +0530</pubDate>
+      
+      <guid>https://rajnishdashora.com/posts/clojure-at-gojek/</guid>
+      <description>&amp;ldquo;You can reach a point with Lisp where, between the conceptual simplicity, the large libraries, and the customisation of macros, you are able to write only code that matters.</description>
     </item>
     
   </channel>

@@ -3,18 +3,23 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://rajnishdashora.com/posts/init/</loc>
-    <lastmod>2021-01-07T18:24:23+05:30</lastmod>
+    <loc>https://rajnishdashora.com/posts/gojek-bootcamp-2017/</loc>
+    <lastmod>2017-08-19T12:01:43+05:30</lastmod>
   </url>
   
   <url>
     <loc>https://rajnishdashora.com/posts/</loc>
-    <lastmod>2021-01-07T18:24:23+05:30</lastmod>
+    <lastmod>2017-08-19T12:01:43+05:30</lastmod>
   </url>
   
   <url>
     <loc>https://rajnishdashora.com/</loc>
-    <lastmod>2021-01-07T18:24:23+05:30</lastmod>
+    <lastmod>2017-08-19T12:01:43+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://rajnishdashora.com/posts/clojure-at-gojek/</loc>
+    <lastmod>2017-03-31T18:24:23+05:30</lastmod>
   </url>
   
   <url>
