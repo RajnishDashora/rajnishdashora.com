@@ -3,13 +3,18 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://rajnishdashora.com/posts/clojure-ring-file-upload-and-data-csv/</loc>
+    <lastmod>2019-09-14T21:43:05+05:30</lastmod>
+  </url>
+  
+  <url>
     <loc>https://rajnishdashora.com/posts/</loc>
-    <lastmod>2019-02-18T21:08:28+05:30</lastmod>
+    <lastmod>2019-09-14T21:43:05+05:30</lastmod>
   </url>
   
   <url>
     <loc>https://rajnishdashora.com/</loc>
-    <lastmod>2019-02-18T21:08:28+05:30</lastmod>
+    <lastmod>2019-09-14T21:43:05+05:30</lastmod>
   </url>
   
   <url>

@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="generator" content="Hugo 0.80.0" />
+
+  <title>How to create APIs in Clojure supporting file upload and data transformation using ring and data.csv &middot; Rajnish Dashora</title>
+
+  <meta name="description" content="" />
+
+  
+
+<meta itemprop="name" content="How to create APIs in Clojure supporting file upload and data transformation using ring and data.csv">
+<meta itemprop="description" content="How to create APIs in Clojure supporting file upload and data transformation using ring and data.">
+<meta itemprop="datePublished" content="2019-09-14T21:43:05+05:30" />
+<meta itemprop="dateModified" content="2019-09-14T21:43:05+05:30" />
+<meta itemprop="wordCount" content="502">
+
+
+
+<meta itemprop="keywords" content="" />
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="How to create APIs in Clojure supporting file upload and data transformation using ring and data.csv"/>
+<meta name="twitter:description" content="How to create APIs in Clojure supporting file upload and data transformation using ring and data."/>
+
+
+<meta property="og:title" content="How to create APIs in Clojure supporting file upload and data transformation using ring and data.csv" />
+<meta property="og:description" content="How to create APIs in Clojure supporting file upload and data transformation using ring and data." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://rajnishdashora.com/posts/clojure-ring-file-upload-and-data-csv/" />
+<meta property="article:published_time" content="2019-09-14T21:43:05+05:30" />
+<meta property="article:modified_time" content="2019-09-14T21:43:05+05:30" />
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type":"Person",
+      "@id": "https://rajnishdashora.com#author",
+      "name": "Rajnish Dashora",
+      "image": {
+        "@type":"ImageObject",
+        
+        "url": "https://rajnishdashora.com/images/rajnish.jpg"
+        
+      },
+      "description": "Hello."
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://rajnishdashora.com#website",
+      "url": "https://rajnishdashora.com",
+      "name": "Rajnish Dashora",
+      "description": "Hello.",
+      "publisher": {
+        "@id": "https://rajnishdashora.com#author"
+      },
+      "inLanguage": "en-us"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://rajnishdashora.com/posts/clojure-ring-file-upload-and-data-csv/#webpage",
+      "url": "https://rajnishdashora.com/posts/clojure-ring-file-upload-and-data-csv/",
+      "name": "How to create APIs in Clojure supporting file upload and data transformation using ring and data.csv",
+      "isPartOf": {
+        "@id": "https://rajnishdashora.com#website"
+      },
+      "about": {
+         "@id": "https://rajnishdashora.com#author"
+      },
+      "datePublished": "2019-09-14T21:43:05+05:30",
+      "dateModified": "2019-09-14T21:43:05+05:30",
+      "description": "How to create APIs in Clojure supporting file upload and data transformation using ring and data.",
+      "inLanguage": "en-us",
+      "potentialAction": [
+        {
+          "@type": "ReadAction",
+          "target": [
+            "https://rajnishdashora.com/posts/clojure-ring-file-upload-and-data-csv/"
+          ]
+        }
+      ]
+    },
+    {
+      "@type": "Article",
+      "isPartOf": {
+        "@id": "https://rajnishdashora.com/posts/clojure-ring-file-upload-and-data-csv/#webpage"
+      },
+      "mainEntityOfPage": {
+        "@id": "https://rajnishdashora.com/posts/clojure-ring-file-upload-and-data-csv/#webpage"
+      },
+      "headline": "How to create APIs in Clojure supporting file upload and data transformation using ring and data.csv",
+      "datePublished": "2019-09-14T21:43:05+05:30",
+      "dateModified": "2019-09-14T21:43:05+05:30",
+      "publisher": {
+        "@id": "https://rajnishdashora.com#author"
+      },
+      "keywords": [
+      ],
+      "articleSection": [
+      ],
+      "inLanguage": "en-us",
+      "author": {
+        "@type": "Person",
+        "name":  null 
+      },
+      "potentialAction": [
+        {
+          "@type": "CommentAction",
+          "name": "Comment",
+          "target": [
+            "https://rajnishdashora.com/posts/clojure-ring-file-upload-and-data-csv/#comments"
+          ]
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/print.css"
+        media="print">
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/poole.css">
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/hyde.css">
+
+  
+
+
+  <link type="text/css" rel="stylesheet" href="/css/blog.css">
+
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700&display=swap">
+
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
+        integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk="
+        crossorigin="anonymous" />
+
+  <link rel="apple-touch-icon-precomposed"
+        sizes="144x144"
+        href="/apple-touch-icon-144-precomposed.png">
+
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  </head>
+<body>
+  <aside class="sidebar">
+  <div class="container">
+    <div class="sidebar-about">
+      
+        
+        <div class="author-image">
+          <img src="/images/rajnish.jpg" class="img-circle img-headshot center" alt="Profile Picture">
+        </div>
+        
+      
+
+      <h1>Rajnish Dashora</h1>
+
+      
+      <p class="lead">Hello.</p>
+      
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li>
+          <a href="https://rajnishdashora.com">Home</a>
+        </li>
+        <li>
+          <a href="/posts/">Posts</a>
+        </li><li>
+          <a href="/about/">About</a>
+        </li>
+      </ul>
+    </nav>
+
+    <section class="social-icons">
+      
+      <a href="https://www.linkedin.com/in/rajnish-dashora-89470242/" rel="me" title="Linkedin" target="_blank">
+        <i class="fab fa-linkedin" aria-hidden="true"></i>
+      </a>
+      
+      <a href="https://github.com/rajnishdashora" rel="me" title="GitHub" target="_blank">
+        <i class="fab fa-github" aria-hidden="true"></i>
+      </a>
+      
+      <a href="https://twitter.com/rajnishdashora" rel="me" title="Twitter" target="_blank">
+        <i class="fab fa-twitter" aria-hidden="true"></i>
+      </a>
+      
+    </section>
+  </div>
+</aside>
+
+
+  <main class="content container">
+  <div class="post">
+  <h1 class="title">How to create APIs in Clojure supporting file upload and data transformation using ring and data.csv</h1>
+  
+
+  <div class="post-date">
+    <time datetime="2019-09-14T21:43:05&#43;0530">Sep 14, 2019</time> &middot; 3 min read
+  </div>
+
+  <div>
+  <h3 class="graf graf--h3 graf--leading graf--title" name="aeba" id="how-to-create-apis-in-clojure-supporting-file-upload-and-data-transformation-using-ring-anddatacsv">How to create APIs in Clojure supporting file upload and data transformation using ring and data.csv</h3>
+<p>Few months back, I was working on writing an HTTP endpoint in Clojure. I
+had a use case to pass a file with comma separated values over http and
+parse the data for further processing. It does make sense to draft notes
+at one place.</p>
+<p>In Clojure, ring is one of the most common library while working with
+HTTP. <strong>What’s
+ring?</strong><a href="https://medium.com/r/?url=https%3A%2F%2Fgithub.com%2Fring-clojure%2Fring">Ring</a>,
+yet another library to help build web applications with modular
+components abstracting out HTTP implementation details into simpler
+APIs.</p>
+<p><a href="https://medium.com/r/?url=https%3A%2F%2Fgithub.com%2Fring-clojure%2Fring%2Fwiki%2FConcepts">Concepts</a>
+in ring are pretty straight forward, you have a request, a response, a
+handler for the request and a middleware to enrich the handler. <strong>Sure,
+then how to use ring for file upload?</strong></p>
+<p><a href="https://medium.com/r/?url=https%3A%2F%2Fgithub.com%2Fring-clojure%2Fring%2Fwiki%2FFile-Uploads">File
+upload</a>
+over HTTP requires multipart form handling, The wrap-multipart-params
+middleware is provided by ring for this purpose. We can use this
+middleware and wrap the api handler with wrap-multipart-param
+middleware. i.e.</p>
+<pre><code class="language-{.graf" data-lang="{.graf">(wrap-multipart-params handler)(wrap-multipart-params handler options)
+</code></pre><p>Optional parameter, options should be a map as follows,</p>
+<pre><code class="language-{.graf" data-lang="{.graf">{:store temp-file-store  ;; a function for storing uploaded files:encoding char-encoding ;; character encoding of parameters }
+</code></pre><p>By default, <a href="https://medium.com/r/?url=https%3A%2F%2Fgithub.com%2Fring-clojure%2Fring%2Fblob%2F1.6.3%2Fring-core%2Fsrc%2Fring%2Fmiddleware%2Fmultipart_params%2Ftemp_file.clj">store
+function</a>
+is used to manage the temporary files created after upload and delete
+every hour. Lets take an example,</p>
+<p>We have a file, sample.csv</p>
+<pre><code class="language-{.graf" data-lang="{.graf">id,name1,foo2,bar
+</code></pre><p>This is how we can make a http request using curl to upload this file,</p>
+<pre><code class="language-{.graf" data-lang="{.graf">curl -XPOST  &quot;http://localhost:8010&quot; -F file=@sample.csv
+</code></pre><p>The wrap-multipart-param middleware will enrich the request by updating
+the value of<code>file</code>{.markup&ndash;code .markup&ndash;p-code} key in
+the <code>:params</code>{.markup&ndash;code .markup&ndash;p-code} map of the request. The
+<code>file</code>{.markup&ndash;code .markup&ndash;p-code} key now
+contains<code>:tempfile, :content-type, :tempfile, :size</code>{.markup&ndash;code
+.markup&ndash;p-code} and the request looks like,</p>
+<pre><code class="language-{.graf" data-lang="{.graf">{... :params  {&quot;file&quot; {:filename     &quot;sample.csv&quot;           :content-type &quot;text/csv&quot;           :tempfile     #object[java.io.File ...]           :size         51}}...}
+</code></pre><p><code>:tempfile</code>{.markup&ndash;code .markup&ndash;p-code} key contains
+<code>java.io.File</code>{.markup&ndash;code .markup&ndash;p-code}object which is the
+uploaded data of the file and this can be used to perform further
+operations.</p>
+<p>We can print the file content after reading as follows,</p>
+<pre><code class="language-{.graf" data-lang="{.graf">(prn (slurp &lt;java.io.File Object&gt;))
+</code></pre><p>Now that we have the uploaded file’s data as a
+<code>java.io.File</code>{.markup&ndash;code .markup&ndash;p-code} object,<strong>How can we
+use</strong><a href="https://medium.com/r/?url=https%3A%2F%2Fgithub.com%2Fclojure%2Fdata.csv"><strong>data.csv</strong></a><strong>for
+creating clojure maps to use comma separated dataset?</strong></p>
+<p>We can now read the file content which is stored
+in <code>:tempfile</code>{.markup&ndash;code .markup&ndash;p-code} key as a
+<code>java.io.File</code>{.markup&ndash;code .markup&ndash;p-code} object as a
+<code>java.io.BufferedReader</code>{.markup&ndash;code .markup&ndash;p-code} object making
+use of
+<a href="https://medium.com/r/?url=https%3A%2F%2Fclojuredocs.org%2Fclojure.java.io">clojure.java.io</a>
+reader function.</p>
+<pre><code class="language-{.graf" data-lang="{.graf">(io/reader (:tempfile (get request-param &quot;file&quot;))
+</code></pre><p>Using
+<a href="https://medium.com/r/?url=https%3A%2F%2Fgithub.com%2Fclojure%2Fdata.csv">data.csv</a>
+read-csv function we can further read the csv data,</p>
+<pre><code class="language-{.graf" data-lang="{.graf">(csv/read-csv reader)
+</code></pre><p>This will give us csv-data as,</p>
+<pre><code class="language-{.graf" data-lang="{.graf">[[&quot;id&quot;, &quot;name&quot;], [&quot;1&quot;, &quot;foo&quot;], [&quot;2&quot;, &quot;bar&quot;]] ;; csv-data
+</code></pre><p>Now to create map out of this, we can the following function,</p>
+<pre><code class="language-{.graf" data-lang="{.graf">(defn csv-data-&gt;maps [csv-data]  (map zipmap       (-&gt;&gt; (first csv-data)            (map keyword)            repeat)       (rest csv-data)))
+</code></pre><pre><code class="language-{.graf" data-lang="{.graf">(csv-data-&gt;maps csv-data) ;; csv-data to map
+</code></pre><p>This outputs to,</p>
+<pre><code class="language-{.graf" data-lang="{.graf">[{:id 1 :name &quot;foo&quot;}, {:id 2 :name &quot;bar&quot;}] ;; csv-data-map
+</code></pre><p>Further we can use this data to perform transformation and process the
+HTTP API response. Using ring middleware and data.csv library it is
+super easy to write APIs to handle csv file uploads and perform
+operations.</p>
+<h4 class="graf graf--h4 graf-after--p" name="5bdc" id="references">References:</h4>
+<p>clojure.java.io :
+<a href="https://medium.com/r/?url=https%3A%2F%2Fclojuredocs.org%2Fclojure.java.io%2Ffile">https://clojuredocs.org/clojure.java.io</a></p>
+<p>Ring concepts :
+<a href="https://medium.com/r/?url=https%3A%2F%2Fgithub.com%2Fring-clojure%2Fring%2Fwiki%2FConcepts">https://github.com/ring-clojure/ring/wiki/Concepts</a></p>
+<p>clojure.data.csv :
+<a href="https://medium.com/r/?url=http%3A%2F%2Fclojure.github.io%2Fdata.csv%2F">http://clojure.github.io/data.csv/</a></p>
+
+  </div>
+
+  <div>
+  <ul class="tags"></ul>
+</div>
+
+
+  <div class="share-buttons">
+  <a class="twitter-share-button"
+     href="#"
+     title="Share on Twitter"
+     data-url="https://rajnishdashora.com/posts/clojure-ring-file-upload-and-data-csv/"
+     data-text="How to create APIs in Clojure supporting file upload and data transformation using ring and data.csv"><i class="fab fa-twitter"></i></a>
+
+  <a class="linkedin-share-button"
+     href="#"
+     title="Share on LinkedIn"
+     data-url="https://rajnishdashora.com/posts/clojure-ring-file-upload-and-data-csv/"
+     data-text="How to create APIs in Clojure supporting file upload and data transformation using ring and data.csv"><i class="fab fa-linkedin-in"></i></a>
+
+  <a class="facebook-share-button"
+     href="#"
+     title="Share on Facebook"
+     data-url="https://rajnishdashora.com/posts/clojure-ring-file-upload-and-data-csv/"
+     data-text="How to create APIs in Clojure supporting file upload and data transformation using ring and data.csv"><i class="fab fa-facebook"></i></a>
+
+  <a class="telegram-share-button"
+     href="#"
+     title="Share on Telegram"
+     data-url="https://rajnishdashora.com/posts/clojure-ring-file-upload-and-data-csv/"
+     data-text="How to create APIs in Clojure supporting file upload and data transformation using ring and data.csv"><i class="fab fa-telegram"></i></a>
+
+  <a class="pinterest-share-button"
+     href="#"
+     title="Share on Pinterest"
+     data-url="https://rajnishdashora.com/posts/clojure-ring-file-upload-and-data-csv/"
+     data-text="How to create APIs in Clojure supporting file upload and data transformation using ring and data.csv"><i class="fab fa-pinterest"></i></a>
+</div>
+
+</div>
+
+
+  </main>
+
+  <footer>
+  <div>
+    <p>
+      &copy; Rajnish Dashora 2021
+
+      &middot; <a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank">CC BY-SA 4.0</a>
+
+      
+    </p>
+  </div>
+</footer>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js"
+          integrity="sha256-MAgcygDRahs+F/Nk5Vz387whB4kSK9NXlDN3w58LLq0="
+          crossorigin="anonymous"></script>
+
+
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/soho.js"></script>
+
+  <script src="/js/blog.js"></script>
+
+  
+</body>
+</html>
