@@ -1,5 +1,5 @@
 ---
-title: "The Pursuit of Balance among Product Delivery, Engineering Quality, and Life"
+title: "The Pursuit of Balance among Product Delivery, Engineering Quality, and Life with engineering"
 date: 2020-06-20T22:32:33+05:30
 draft: false
 ---
