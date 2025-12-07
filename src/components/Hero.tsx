@@ -14,12 +14,20 @@ const Hero = () => {
         <h1 className="text-5xl md:text-7xl font-bold mb-6 animate-fade-in-up">
           Rajnish Dashora
         </h1>
-        <p className="text-xl md:text-2xl text-blue-100 mb-8 animate-fade-in-up animation-delay-200">
+        <p className="text-xl md:text-2xl text-blue-100 mb-8 animate-fade-in-up animation-delay-200 font-light italic">
           Structure Chaos, Build Teams, Solve Problems, Write Code, Repeat.
         </p>
-        <p className="text-lg md:text-xl text-blue-200 mb-12 animate-fade-in-up animation-delay-400">
-          VP of Engineering at <a href="https://www.realfast.ai" target="_blank" rel="noopener noreferrer" className="text-white font-semibold hover:underline">realfast.ai</a>
-        </p>
+        <div className="max-w-3xl mx-auto space-y-4 mb-12">
+          <p className="text-lg md:text-xl text-blue-100 animate-fade-in-up animation-delay-300">
+            Hi, I'm Rajnish. I focus on building teams and systems that make a real impact—
+            from McKinsey & Company to Gojek's hypergrowth to now leading AI
+            development at <a href="https://www.realfast.ai" target="_blank" rel="noopener noreferrer" className="text-white font-semibold hover:underline">realfast</a>.
+          </p>
+          <p className="text-lg md:text-xl text-blue-200 animate-fade-in-up animation-delay-400">
+            I love the craft: building teams, structuring chaos, coaching people, and
+            creating platforms that solve real problems. Always learning, always building.
+          </p>
+        </div>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in-up animation-delay-600">
           <a
