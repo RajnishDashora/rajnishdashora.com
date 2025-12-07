@@ -1,29 +1,30 @@
 import { Github, Linkedin, Twitter } from 'lucide-react'
+import profileImage from '../assets/images/rajnish.png'
 
 const Hero = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-900 via-blue-800 to-blue-600 text-white overflow-hidden">
-      {/* Animated background */}
-      <div className="absolute inset-0 opacity-20">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-400 rounded-full mix-blend-multiply filter blur-3xl animate-blob"></div>
-        <div className="absolute top-1/3 right-1/4 w-96 h-96 bg-purple-400 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000"></div>
-        <div className="absolute bottom-1/4 left-1/3 w-96 h-96 bg-indigo-400 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-4000"></div>
-      </div>
-
-      <div className="relative z-10 max-w-5xl mx-auto px-6 py-20 text-center">
-        <h1 className="text-5xl md:text-7xl font-bold mb-6 animate-fade-in-up">
+    <section className="relative min-h-screen flex items-center justify-center bg-[#0F172A] text-white overflow-hidden">
+      <div className="max-w-5xl mx-auto px-6 py-20 text-center">
+        <div className="mb-8 animate-fade-in-up">
+          <img
+            src={profileImage}
+            alt="Rajnish Dashora"
+            className="w-40 h-40 md:w-48 md:h-48 rounded-full mx-auto border-2 border-white/40 shadow-[0_10px_40px_rgba(0,0,0,0.5),0_6px_20px_rgba(34,211,238,0.4),0_-2px_10px_rgba(255,255,255,0.15)] object-cover"
+          />
+        </div>
+        <h1 className="text-5xl md:text-7xl font-bold mb-6 animate-fade-in-up animation-delay-100 text-[#F9FAFB]">
           Rajnish Dashora
         </h1>
-        <p className="text-xl md:text-2xl text-blue-100 mb-8 animate-fade-in-up animation-delay-200 font-light italic">
+        <p className="text-xl md:text-2xl text-[#9CA3AF] mb-8 animate-fade-in-up animation-delay-200 font-light italic">
           Structure Chaos, Build Teams, Solve Problems, Write Code, Repeat.
         </p>
         <div className="max-w-3xl mx-auto space-y-4 mb-12">
-          <p className="text-lg md:text-xl text-blue-100 animate-fade-in-up animation-delay-300">
+          <p className="text-lg md:text-xl text-[#F9FAFB] animate-fade-in-up animation-delay-300">
             Hi, I'm Rajnish. I focus on building teams and systems that make a real impact—
             from McKinsey & Company to Gojek's hypergrowth to now leading AI
-            development at <a href="https://www.realfast.ai" target="_blank" rel="noopener noreferrer" className="text-white font-semibold hover:underline">realfast</a>.
+            development at <a href="https://www.realfast.ai" target="_blank" rel="noopener noreferrer" className="text-[#22D3EE] font-semibold hover:text-[#01C16A] transition-colors">realfast</a>.
           </p>
-          <p className="text-lg md:text-xl text-blue-200 animate-fade-in-up animation-delay-400">
+          <p className="text-lg md:text-xl text-[#9CA3AF] animate-fade-in-up animation-delay-400">
             I love the craft: building teams, structuring chaos, coaching people, and
             creating platforms that solve real problems. Always learning, always building.
           </p>

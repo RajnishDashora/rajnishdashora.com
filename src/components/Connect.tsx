@@ -2,13 +2,13 @@ import { Github, Linkedin, Twitter, ExternalLink } from 'lucide-react'
 
 const Connect = () => {
   return (
-    <section id="connect" className="py-24 bg-gradient-to-br from-blue-900 via-blue-800 to-blue-600 text-white">
+    <section id="connect" className="py-24 bg-[#111827] text-[#F9FAFB]">
       <div className="max-w-5xl mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
             Let's Connect
           </h2>
-          <p className="text-xl text-blue-100">
+          <p className="text-xl text-[#9CA3AF]">
             I'm always eager to connect, collaborate, and share insights from a journey filled with learning, adapting, and innovating.
           </p>
         </div>
@@ -22,7 +22,7 @@ const Connect = () => {
           >
             <Github className="w-12 h-12" />
             <div className="text-center">
-              <div className="text-sm text-blue-100 mb-1">Code & Projects</div>
+              <div className="text-sm text-[#9CA3AF] group-hover:text-white mb-1">Code & Projects</div>
               <div className="font-semibold flex items-center gap-1">
                 github.com/rajnishdashora
                 <ExternalLink className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -38,7 +38,7 @@ const Connect = () => {
           >
             <Linkedin className="w-12 h-12" />
             <div className="text-center">
-              <div className="text-sm text-blue-100 mb-1">Professional Network</div>
+              <div className="text-sm text-[#9CA3AF] group-hover:text-white mb-1">Professional Network</div>
               <div className="font-semibold flex items-center gap-1">
                 linkedin.com/in/rajnish-dashora
                 <ExternalLink className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -54,7 +54,7 @@ const Connect = () => {
           >
             <Twitter className="w-12 h-12" />
             <div className="text-center">
-              <div className="text-sm text-blue-100 mb-1">Thoughts & Updates</div>
+              <div className="text-sm text-[#9CA3AF] group-hover:text-white mb-1">Thoughts & Updates</div>
               <div className="font-semibold flex items-center gap-1">
                 twitter.com/rajnishdashora
                 <ExternalLink className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />
