@@ -8,6 +8,13 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    id: '6',
+    title: 'How to Earn Enterprise Trust in AI: A 4-Phase Framework',
+    date: 'July 5, 2026',
+    excerpt: 'Nearly 9 in 10 enterprise AI pilots never reach production. The gap is trust, not model capability. The 4-phase framework and architecture to earn it.',
+    slug: '2026-07-05-earning-enterprise-ai-trust'
+  },
+  {
     id: '1',
     title: 'Pursuit of Balance among Product Delivery, Engineering Quality and Life',
     date: 'June 20, 2020',

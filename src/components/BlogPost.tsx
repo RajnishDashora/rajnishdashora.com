@@ -147,6 +147,10 @@ export default function BlogPost() {
               blockquote: ({node, ...props}) => (
                 <blockquote className="border-l-4 border-[#22D3EE] pl-4 italic text-[#9CA3AF] my-4" {...props} />
               ),
+              strong: ({node, ...props}) => <strong className="text-[#F9FAFB] font-semibold" {...props} />,
+              img: ({node, ...props}) => (
+                <img className="max-w-full h-auto my-8 mx-auto block" loading="lazy" {...props} />
+              ),
             }}
           >
             {content}
