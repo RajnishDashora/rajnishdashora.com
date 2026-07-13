@@ -8,6 +8,13 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    id: '7',
+    title: "AI Coding Agents: The Chaos Isn't the Model — It's the Missing Harness",
+    date: 'July 13, 2026',
+    excerpt: "Coding with AI agents feels like a slot machine — brilliant one pull, broken the next. The fix isn't a better model; it's the harness you build around it.",
+    slug: '2026-07-13-ai-coding-agents-missing-harness'
+  },
+  {
     id: '6',
     title: 'How to Earn Enterprise Trust in AI: A 4-Phase Framework',
     date: 'July 5, 2026',
