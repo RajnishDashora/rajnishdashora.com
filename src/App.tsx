@@ -15,7 +15,6 @@ function HomePage() {
       <About />
       <Writing />
       <Connect />
-      <Footer />
     </div>
   )
 }
@@ -29,10 +28,13 @@ function AppContent() {
   }, [location])
 
   return (
-    <Routes>
-      <Route path="/" element={<HomePage />} />
-      <Route path="/posts/:slug" element={<BlogPost />} />
-    </Routes>
+    <>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/posts/:slug" element={<BlogPost />} />
+      </Routes>
+      <Footer />
+    </>
   )
 }
 
