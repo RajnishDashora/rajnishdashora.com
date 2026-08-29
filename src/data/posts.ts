@@ -8,6 +8,13 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    id: '8',
+    title: "Cost, Capability, Experience: A CTO's Build-vs-Buy Philosophy for the Age of AI",
+    date: 'July 18, 2026',
+    excerpt: "AI didn't kill build-vs-buy — it moved the line, and most teams are still deciding with the old map. A three-lens philosophy for what to build, what to buy, and the one thing you should always own.",
+    slug: '2026-07-18-build-vs-buy-age-of-ai'
+  },
+  {
     id: '7',
     title: "AI Coding Agents: The Chaos Isn't the Model — It's the Missing Harness",
     date: 'July 13, 2026',
