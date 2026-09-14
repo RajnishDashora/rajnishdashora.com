@@ -8,6 +8,13 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    id: '9',
+    title: "The Agent-Primitive Playbook Is Already Written. Adopt It in Order of What You Can't Retrofit.",
+    date: 'September 15, 2026',
+    excerpt: "The advice on governing agent instructions has converged: owners, behavioral review, regression gates, cleanup, run-level records. What's missing is the order. Sort every practice by what it costs to add later, and the sequence looks nothing like the checklists.",
+    slug: '2026-09-15-agent-primitives-adopt-what-you-cant-retrofit'
+  },
+  {
     id: '8',
     title: "Cost, Capability, Experience: A CTO's Build-vs-Buy Philosophy for the Age of AI",
     date: 'July 18, 2026',
