@@ -37,14 +37,53 @@ function parseFrontmatter(text: string): { data: BlogPostMetadata; content: stri
   return { data: data as BlogPostMetadata, content }
 }
 
+// Prerendered post pages (scripts/prerender.mjs) embed the post as JSON, so the
+// first render needs no fetch and no "Loading..." flash. Client-side navigation to
+// another post falls back to fetching the markdown.
+interface PrerenderedPost extends BlogPostMetadata {
+  slug: string
+  content: string
+}
+
+function readPrerendered(slug?: string): PrerenderedPost | null {
+  const el = document.getElementById('post-data')
+  if (!el || !slug) return null
+  try {
+    const data = JSON.parse(el.textContent || '') as PrerenderedPost
+    return data.slug === slug ? data : null
+  } catch {
+    return null
+  }
+}
+
 export default function BlogPost() {
   const { slug } = useParams<{ slug: string }>()
-  const [content, setContent] = useState<string>('')
-  const [metadata, setMetadata] = useState<BlogPostMetadata | null>(null)
-  const [loading, setLoading] = useState(true)
+  const prerendered = readPrerendered(slug)
+  const [content, setContent] = useState<string>(prerendered?.content ?? '')
+  const [metadata, setMetadata] = useState<BlogPostMetadata | null>(prerendered)
+  const [loading, setLoading] = useState(!prerendered)
   const [error, setError] = useState(false)
 
   useEffect(() => {
+    if (!metadata?.title) return
+    const previous = document.title
+    document.title = `${metadata.title} | Rajnish Dashora`
+    return () => {
+      document.title = previous
+    }
+  }, [metadata?.title])
+
+  useEffect(() => {
+    if (readPrerendered(slug)) {
+      const data = readPrerendered(slug)!
+      setMetadata(data)
+      setContent(data.content)
+      setError(false)
+      setLoading(false)
+      return
+    }
+
+    setLoading(true)
     const fetchPost = async () => {
       try {
         const response = await fetch(`/posts/${slug}.md`)
