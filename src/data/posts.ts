@@ -8,6 +8,13 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    id: '10',
+    title: 'SOC 2 and ISO 27001 Are Engineering Problems Disguised as Paperwork',
+    date: 'October 3, 2026',
+    excerpt: "Neither certification is won by having good controls. Both are won by proving the controls ran — which makes evidence the bottleneck, and evidence is something you engineer, not something you write.",
+    slug: '2026-10-03-soc2-iso27001-engineering-problem'
+  },
+  {
     id: '9',
     title: "The Agent-Primitive Playbook Is Already Written. Adopt It in Order of What You Can't Retrofit.",
     date: 'September 15, 2026',
