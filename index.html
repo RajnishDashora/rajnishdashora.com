@@ -20,6 +20,19 @@
     <meta name="twitter:image" content="https://rajnishdashora.com/og-default.png" />
     <!--seo:end-->
     <script>
+      // Apply the theme before first paint so there's no flash of the wrong one:
+      // a saved choice wins, otherwise follow the system. Runs on prerendered posts
+      // too, since they're built from this template.
+      (function () {
+        var theme;
+        try { theme = localStorage.getItem('theme'); } catch (e) {}
+        if (theme !== 'light' && theme !== 'dark') {
+          theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+        document.documentElement.dataset.theme = theme;
+      })();
+    </script>
+    <script>
       // Single Page Apps for GitHub Pages — the decoder half of
       // https://github.com/rafgraph/spa-github-pages (404.html is the encoder half).
       // 404.html turns /some/path into /?/some/path; this restores /some/path

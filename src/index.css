@@ -3,12 +3,63 @@
 @tailwind utilities;
 
 @layer base {
+  /* Light theme (default when no theme is set and the system isn't dark). */
+  :root {
+    --c-page: 255 255 255;        /* #FFFFFF */
+    --c-surface: 241 245 249;     /* #F1F5F9 */
+    --c-fg: 15 23 42;             /* #0F172A */
+    --c-muted: 71 85 105;         /* #475569 */
+    --c-accent: 14 116 144;       /* #0E7490 */
+    --c-accent-hover: 4 120 87;   /* #047857 */
+    --c-line: 15 23 42;           /* used at low opacity for borders/glass */
+    color-scheme: light;
+  }
+
+  /* Dark theme: the original palette. index.html sets data-theme before first
+     paint; the media query covers visitors with JavaScript off. */
+  :root[data-theme='dark'] {
+    --c-page: 15 23 42;           /* #0F172A */
+    --c-surface: 17 24 39;        /* #111827 */
+    --c-fg: 249 250 251;          /* #F9FAFB */
+    --c-muted: 156 163 175;       /* #9CA3AF */
+    --c-accent: 34 211 238;       /* #22D3EE */
+    --c-accent-hover: 1 193 106;  /* #01C16A */
+    --c-line: 255 255 255;
+    color-scheme: dark;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme]) {
+      --c-page: 15 23 42;
+      --c-surface: 17 24 39;
+      --c-fg: 249 250 251;
+      --c-muted: 156 163 175;
+      --c-accent: 34 211 238;
+      --c-accent-hover: 1 193 106;
+      --c-line: 255 255 255;
+      color-scheme: dark;
+    }
+  }
+
   html {
     scroll-behavior: smooth;
   }
 
   body {
-    @apply bg-white text-gray-900 antialiased;
+    @apply bg-page text-fg antialiased;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    /* Shorten rather than remove, so fade-ins still land on their final frame. */
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
   }
 }
 

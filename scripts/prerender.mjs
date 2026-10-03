@@ -48,17 +48,17 @@ if (!template.includes('<div id="root"></div>')) {
 // Same Tailwind classes as src/components/BlogPost.tsx, so the static page and the
 // React render look the same when React takes over.
 const cls = {
-  h1: 'text-3xl font-bold text-[#F9FAFB] mt-8 mb-4',
-  h2: 'text-2xl font-bold text-[#F9FAFB] mt-8 mb-4',
-  h3: 'text-xl font-bold text-[#F9FAFB] mt-6 mb-3',
-  p: 'text-[#9CA3AF] mb-4 leading-relaxed',
-  ul: 'list-disc list-inside mb-4 text-[#9CA3AF]',
-  ol: 'list-decimal list-inside mb-4 text-[#9CA3AF]',
+  h1: 'text-3xl font-bold text-fg mt-8 mb-4',
+  h2: 'text-2xl font-bold text-fg mt-8 mb-4',
+  h3: 'text-xl font-bold text-fg mt-6 mb-3',
+  p: 'text-muted mb-4 leading-relaxed',
+  ul: 'list-disc list-inside mb-4 text-muted',
+  ol: 'list-decimal list-inside mb-4 text-muted',
   li: 'mb-2',
-  a: 'text-[#22D3EE] hover:text-[#01C16A] underline transition-colors',
-  blockquote: 'border-l-4 border-[#22D3EE] pl-4 italic text-[#9CA3AF] my-4',
-  strong: 'text-[#F9FAFB] font-semibold',
-  img: 'max-w-full h-auto my-8 mx-auto block',
+  a: 'text-accent hover:text-accent-hover underline transition-colors',
+  blockquote: 'border-l-4 border-accent pl-4 italic text-muted my-4',
+  strong: 'text-fg font-semibold',
+  img: 'max-w-full h-auto my-8 mx-auto block rounded-xl border border-line/10',
 }
 const components = Object.fromEntries(
   Object.entries(cls).map(([tag, className]) => [
@@ -95,17 +95,17 @@ function articleHtml(post) {
     createElement(Markdown, { remarkPlugins: [remarkGfm], components }, post.content),
   )
   // Mirrors BlogPost.tsx's layout (header + article) without the icon.
-  return `<div class="min-h-screen bg-[#0F172A]">
-      <header class="bg-[#111827] border-b border-white/10 sticky top-0 z-10">
+  return `<div class="min-h-screen bg-page">
+      <header class="bg-surface border-b border-line/10 sticky top-0 z-10">
         <div class="max-w-4xl mx-auto px-6 py-4">
-          <a href="/" class="inline-flex items-center gap-2 text-[#22D3EE] hover:text-[#01C16A] font-medium transition-colors">← Back to home</a>
+          <a href="/" class="inline-flex items-center gap-2 text-accent hover:text-accent-hover font-medium transition-colors">← Back to home</a>
         </div>
       </header>
       <article class="max-w-4xl mx-auto px-6 py-12">
         <header class="mb-12">
-          <time class="text-[#22D3EE] font-medium"${post.iso ? ` datetime="${post.iso}"` : ''}>${esc(post.date)}</time>
-          <h1 class="text-4xl md:text-5xl font-bold text-[#F9FAFB] mt-4 mb-6">${esc(post.title)}</h1>
-          <p class="text-xl text-[#9CA3AF]">${esc(post.excerpt)}</p>
+          <time class="text-accent font-medium"${post.iso ? ` datetime="${post.iso}"` : ''}>${esc(post.date)}</time>
+          <h1 class="text-4xl md:text-5xl font-bold text-fg mt-4 mb-6">${esc(post.title)}</h1>
+          <p class="text-xl text-muted">${esc(post.excerpt)}</p>
         </header>
         <div class="prose prose-lg prose-blue max-w-none">${body}</div>
       </article>

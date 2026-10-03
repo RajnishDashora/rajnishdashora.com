@@ -6,6 +6,7 @@ import Writing from './components/Writing'
 import Connect from './components/Connect'
 import Footer from './components/Footer'
 import BlogPost from './components/BlogPost'
+import ThemeToggle from './components/ThemeToggle'
 import { trackPageView } from './utils/analytics'
 
 function HomePage() {
@@ -29,6 +30,7 @@ function AppContent() {
 
   return (
     <>
+      <ThemeToggle />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/posts/:slug" element={<BlogPost />} />
