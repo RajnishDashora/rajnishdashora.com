@@ -20,15 +20,14 @@
     <meta name="twitter:image" content="https://rajnishdashora.com/og-default.png" />
     <!--seo:end-->
     <script>
-      // Apply the theme before first paint so there's no flash of the wrong one:
-      // a saved choice wins, otherwise follow the system. Runs on prerendered posts
-      // too, since they're built from this template.
+      // Apply the theme before first paint so there's no flash of the wrong one.
+      // Light is the default; a saved choice wins. The system preference is no longer
+      // followed — dark is opt-in via the toggle. Runs on prerendered pages too,
+      // since they're built from this template.
       (function () {
         var theme;
         try { theme = localStorage.getItem('theme'); } catch (e) {}
-        if (theme !== 'light' && theme !== 'dark') {
-          theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-        }
+        if (theme !== 'light' && theme !== 'dark') { theme = 'light'; }
         document.documentElement.dataset.theme = theme;
       })();
     </script>

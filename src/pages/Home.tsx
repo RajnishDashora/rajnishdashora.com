@@ -27,14 +27,16 @@ const Home = () => {
             </div>
           </div>
 
-          {/* Short on purpose: Home introduces and points onward. The longer version is on About. */}
+          {/* Short on purpose: Home introduces and points onward. The longer version is on About.
+              Deliberately free of current subjects — naming today's topics means rewriting this
+              paragraph every time the writing moves on. */}
           <p className="text-[19px] leading-relaxed text-fg max-w-[62ch]">
             I'm Rajnish. I build engineering organisations that ship AI where mistakes are
             expensive — currently VP Engineering at{' '}
             <a href="https://www.realfast.ai" target="_blank" rel="noopener noreferrer" className="font-semibold text-accent hover:text-accent-hover transition-colors">realfast</a>,
             before that <span className="font-semibold">Gojek</span> and{' '}
             <span className="font-semibold">McKinsey</span>. I still write code most weeks, and I write
-            here about enterprise AI, harness engineering, and leading engineering through both.
+            here about the work: what it took, what it cost, and what I'd do differently.
           </p>
 
           <p className="text-sm text-muted mt-5">

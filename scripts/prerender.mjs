@@ -195,11 +195,7 @@ writePage({
   body: shell(
     `<h1 class="text-4xl font-bold text-[#F9FAFB] mb-6">About</h1>` +
     `<p class="text-xl text-[#F9FAFB] mb-6">${esc(about.lead)}</p>` +
-    about.paragraphs.map((t) => `<p class="text-[#9CA3AF] mb-4 leading-relaxed">${esc(t)}</p>`).join('') +
-    `<h2 class="text-2xl font-bold text-[#F9FAFB] mt-8 mb-4">Roles</h2>` +
-    about.roles.map((r) => `<div class="mb-4"><div class="text-[#9CA3AF] text-sm">${esc(r.dates)}</div><div class="text-[#F9FAFB]"><strong>${esc(r.title)}</strong>, ${esc(r.org)}</div><div class="text-[#9CA3AF] text-sm">${esc(r.scope)}</div><div class="text-[#9CA3AF] text-sm">${esc(r.outcomes.join(' · '))}</div></div>`).join('') +
-    `<h2 class="text-2xl font-bold text-[#F9FAFB] mt-8 mb-4">Short bio</h2>` +
-    `<p class="text-[#9CA3AF] leading-relaxed">${esc(about.bio)}</p>`
+    about.paragraphs.map((t) => `<p class="text-[#9CA3AF] mb-4 leading-relaxed">${esc(t)}</p>`).join('')
   ),
 })
 

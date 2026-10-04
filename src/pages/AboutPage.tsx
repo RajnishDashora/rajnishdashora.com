@@ -5,8 +5,11 @@ import about from '../data/about.json'
 
 /**
  * Copy lives in src/data/about.json so this page and scripts/prerender.mjs render the same words.
- * Roles carry the numbers, next to the work that produced them — they are deliberately not
- * repeated as a strip of metric tiles anywhere else on the site.
+ *
+ * The Roles table was removed on 2026-10-04 — it repeated what the career moves will say in the
+ * Index (ADMIN-22) and what LinkedIn and the resume already carry. Note the side effect: the
+ * scale numbers (0 → 50+, SOC 2 + ISO 27001, 2wk → <5min, 1,000+ microservices) now appear
+ * nowhere on the site. See ADMIN-22 for where they should land.
  */
 const H = ({ children }: { children: React.ReactNode }) => (
   <h2 className="text-xs uppercase tracking-[0.08em] text-muted mt-12 mb-4">{children}</h2>
@@ -27,22 +30,6 @@ const AboutPage = () => (
           ))}
         </div>
 
-        <H>Roles</H>
-        <div>
-          {about.roles.map((r) => (
-            <div key={r.dates} className="grid sm:grid-cols-[150px_1fr] gap-x-4 gap-y-1 py-4 border-b border-dotted border-line/20">
-              <div className="text-sm text-muted">{r.dates}</div>
-              <div>
-                <div className="text-fg">
-                  <span className="font-semibold">{r.title}</span>, {r.org}
-                </div>
-                <div className="text-sm text-muted mt-1">{r.scope}</div>
-                <div className="text-sm text-muted mt-1">{r.outcomes.join(' · ')}</div>
-              </div>
-            </div>
-          ))}
-        </div>
-
         <H>Writing &amp; speaking</H>
         <p className="text-muted max-w-[68ch]">
           {about.writing}{' '}
@@ -51,8 +38,6 @@ const AboutPage = () => (
           </Link>
         </p>
 
-        <H>Short bio</H>
-        <p className="text-[15px] text-muted max-w-[68ch]">{about.bio}</p>
       </main>
       <Rail showStartHere />
     </div>

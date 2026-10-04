@@ -2,7 +2,7 @@ import { useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
 import Nav from '../components/Nav'
 import Rail from '../components/Rail'
-import { entries, entryTypes, shortDate, type EntryType } from '../data/entries'
+import { ALL_TYPES, countsByType, entries, shortDate, type EntryType } from '../data/entries'
 
 const Row = ({ e }: { e: (typeof entries)[number] }) => {
   const src = e.type === 'Move' ? '' : e.type !== 'Post' ? e.type : (e.where ?? '')
@@ -30,7 +30,7 @@ const Row = ({ e }: { e: (typeof entries)[number] }) => {
 const IndexPage = () => {
   const [q, setQ] = useState('')
   const [type, setType] = useState<EntryType | 'All'>('All')
-  const types = entryTypes()
+  const counts = countsByType()
 
   const byYear = useMemo(() => {
     const needle = q.toLowerCase().trim()
@@ -65,26 +65,34 @@ const IndexPage = () => {
             className="w-full px-4 py-2.5 rounded-lg border border-line/15 bg-page text-fg placeholder:text-muted focus:outline focus:outline-2 focus:outline-accent"
           />
 
-          {/* Chips appear on their own once a second type exists. With posts only, they would
-              filter nothing. */}
-          {types.length > 1 && (
-            <div className="flex gap-2 flex-wrap mt-3">
-              {(['All', ...types] as const).map((t) => (
+          {/* One filter: content type. Types with nothing in them yet are shown but disabled —
+              the shape of the hub is visible without anyone clicking into an empty list. */}
+          <div className="flex gap-2 flex-wrap mt-3">
+            {(['All', ...ALL_TYPES] as const).map((t) => {
+              const empty = t !== 'All' && !counts[t]
+              const on = type === t
+              return (
                 <button
                   key={t}
                   type="button"
+                  disabled={empty}
                   onClick={() => setType(t as EntryType | 'All')}
-                  aria-pressed={type === t}
+                  aria-pressed={on}
+                  title={empty ? 'Nothing here yet' : undefined}
                   className={
                     'text-xs px-3 py-1 rounded-full border transition-colors ' +
-                    (type === t ? 'bg-fg text-page border-fg' : 'border-line/20 text-fg hover:border-line/40')
+                    (on
+                      ? 'bg-fg text-page border-fg'
+                      : empty
+                        ? 'border-line/10 text-muted/50 cursor-not-allowed'
+                        : 'border-line/20 text-fg hover:border-line/40')
                   }
                 >
                   {t}
                 </button>
-              ))}
-            </div>
-          )}
+              )
+            })}
+          </div>
 
           <div className="mt-8">
             {byYear.length === 0 && <p className="text-muted">Nothing matches.</p>}

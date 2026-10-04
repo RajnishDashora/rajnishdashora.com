@@ -7,7 +7,11 @@ import { blogPosts } from './posts'
  * writing that first appeared elsewhere each have their own card on the board and slot in
  * here without a rewrite: add the entries, and the type chips appear on their own.
  */
-export type EntryType = 'Post' | 'Talk' | 'Paper' | 'Move'
+export type EntryType = 'Post' | 'Talk' | 'Research Paper' | 'Move'
+
+/** Every type the Index filters by, in the order the chips show. Types with nothing in them yet
+ *  still appear, disabled — the shape of the hub is visible before the content lands. */
+export const ALL_TYPES: EntryType[] = ['Post', 'Talk', 'Move', 'Research Paper']
 
 export interface Entry {
   id: string
@@ -51,8 +55,9 @@ const postEntries: Entry[] = blogPosts.map((p) => ({
 
 export const entries: Entry[] = [...postEntries].sort((a, b) => b.iso.localeCompare(a.iso))
 
-export const entryTypes = (): EntryType[] =>
-  [...new Set(entries.map((e) => e.type))] as EntryType[]
+/** How many entries each type has, so the chips can disable the empty ones. */
+export const countsByType = (): Record<string, number> =>
+  entries.reduce<Record<string, number>>((acc, e) => ({ ...acc, [e.type]: (acc[e.type] ?? 0) + 1 }), {})
 
 export const featured = entries.filter((e) => e.featured)
 

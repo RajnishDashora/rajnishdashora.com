@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 @layer base {
-  /* Light theme (default when no theme is set and the system isn't dark). */
+  /* Light theme — the default for everyone. Dark is opt-in via the toggle. */
   :root {
     --c-page: 255 255 255;        /* #FFFFFF */
     --c-surface: 241 245 249;     /* #F1F5F9 */
@@ -15,8 +15,10 @@
     color-scheme: light;
   }
 
-  /* Dark theme: the original palette. index.html sets data-theme before first
-     paint; the media query covers visitors with JavaScript off. */
+  /* Dark theme: the original palette, applied only when the visitor has chosen it.
+     index.html sets data-theme before first paint. The prefers-color-scheme block was
+     removed on 2026-10-04 — with light as the default it would have put a dark-system
+     visitor with JavaScript off into a theme the rest of the site disagrees with. */
   :root[data-theme='dark'] {
     --c-page: 15 23 42;           /* #0F172A */
     --c-surface: 17 24 39;        /* #111827 */
@@ -26,19 +28,6 @@
     --c-accent-hover: 1 193 106;  /* #01C16A */
     --c-line: 255 255 255;
     color-scheme: dark;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme]) {
-      --c-page: 15 23 42;
-      --c-surface: 17 24 39;
-      --c-fg: 249 250 251;
-      --c-muted: 156 163 175;
-      --c-accent: 34 211 238;
-      --c-accent-hover: 1 193 106;
-      --c-line: 255 255 255;
-      color-scheme: dark;
-    }
   }
 
   html {

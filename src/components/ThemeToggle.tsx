@@ -28,15 +28,14 @@ const ThemeToggle = () => {
   }, [theme])
 
   useEffect(() => {
-    // Follow the system until the visitor picks a theme themselves.
+    // Light is the default; the system preference is not followed. Only a choice made
+    // here (or in another tab) changes the theme.
     const media = systemQuery()
-    const onSystemChange = () => {
-      if (!readStored()) setTheme(media.matches ? 'dark' : 'light')
-    }
+    const onSystemChange = () => {}
     // Keep other open tabs in step with a choice made here.
     const onStorage = (e: StorageEvent) => {
       if (e.key !== STORAGE_KEY) return
-      setTheme(readStored() ?? (media.matches ? 'dark' : 'light'))
+      setTheme(readStored() ?? 'light')
     }
     media.addEventListener('change', onSystemChange)
     window.addEventListener('storage', onStorage)
