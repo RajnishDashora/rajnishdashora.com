@@ -9,12 +9,16 @@ const ELSEWHERE = [
 ]
 
 /**
- * Now carries only what is verifiably true today. Refining it — and deciding whether a
- * newsletter exists — are their own cards; an unconfirmed line here would be worse than a short one.
+ * Now — what he's actually doing. Rajnish's own words (2026-10-04), lightly sentence-cased.
+ *
+ * It opened with "Rebuilding this site as a content hub", which was the site talking about itself.
+ * A reader doesn't care how the page was made; they care what the person is working on.
  */
 const NOW = [
-  { what: 'Writing a series on harness engineering', detail: 'how teams make AI coding agents reliable enough for regulated work' },
-  { what: 'Rebuilding this site as a content hub', detail: 'writing, talks, papers and the moves between them in one place' },
+  'Building AI-native technology consulting',
+  'Leading AI transformation & software delivery for regulated enterprises',
+  'Advising startups',
+  'Writing a series on harness engineering',
 ]
 
 const Box = ({ title, children }: { title: string; children: React.ReactNode }) => (
@@ -41,11 +45,10 @@ const Rail = ({ showStartHere = false }: { showStartHere?: boolean }) => (
     )}
 
     <Box title="Now">
-      <ul className="space-y-3">
+      <ul className="space-y-2.5">
         {NOW.map((n) => (
-          <li key={n.what}>
-            <span className="block font-semibold text-fg text-[15px]">{n.what}</span>
-            <span className="text-muted">{n.detail}</span>
+          <li key={n} className="text-[15px] text-fg leading-snug">
+            {n}
           </li>
         ))}
       </ul>
