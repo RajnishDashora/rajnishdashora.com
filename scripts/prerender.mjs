@@ -68,7 +68,8 @@ const components = Object.fromEntries(
 )
 
 function seoBlock(post) {
-  const url = `${SITE}/posts/${post.slug}`
+  // Pages pass their own url; posts default to /posts/<slug>.
+  const url = post.url || `${SITE}/posts/${post.slug}`
   const image = abs(post.image || DEFAULT_IMAGE)
   return [
     `<meta name="description" content="${esc(post.excerpt)}" />`,
@@ -148,10 +149,66 @@ for (const post of posts) {
   fs.writeFileSync(path.join(dist, 'posts', post.slug, 'index.html'), html)
 }
 
+// --- /all and /about -------------------------------------------------------------------
+// Both get real HTML for the same reason posts do: a crawler or a link preview that lands on
+// an empty <div id="root"> sees nothing. /all is built from the same post files the list uses,
+// so it cannot drift; /about reads src/data/about.json, the file the React page imports.
+function writePage({ slug, title, description, body }) {
+  const page = { slug, title, excerpt: description, image: '', iso: null, url: `${SITE}/${slug}` }
+  const html = template
+    .replace(/<title>[\s\S]*?<\/title>/, `<title>${esc(`${title} | ${AUTHOR}`)}</title>`)
+    .replace(/<!--seo:start-->[\s\S]*?<!--seo:end-->/, `<!--seo:start-->\n    ${seoBlock(page).replace('og:type" content="article"', 'og:type" content="website"')}\n    <!--seo:end-->`)
+    .replace('<div id="root"></div>', `<div id="root">${body}</div>`)
+  fs.mkdirSync(path.join(dist, slug), { recursive: true })
+  fs.writeFileSync(path.join(dist, `${slug}.html`), html)
+  fs.writeFileSync(path.join(dist, slug, 'index.html'), html)
+}
+
+const shell = (inner) => `<div class="min-h-screen bg-[#0F172A]"><div class="max-w-4xl mx-auto px-6 py-12">${inner}</div></div>`
+
+// /all — year-grouped list, derived from the same posts
+const byYear = {}
+posts.slice().sort((a, b) => (b.iso || '').localeCompare(a.iso || '')).forEach((p) => {
+  const y = (p.iso || '').slice(0, 4) || 'Undated'
+  ;(byYear[y] ||= []).push(p)
+})
+writePage({
+  slug: 'all',
+  title: 'Index',
+  description: 'Writing, talks, papers and the moves between them — one list, newest first.',
+  body: shell(
+    `<h1 class="text-4xl font-bold text-[#F9FAFB] mb-2">Index</h1>` +
+    `<p class="text-[#9CA3AF] mb-8">Writing, talks, papers and the moves between them — one list, newest first.</p>` +
+    Object.entries(byYear).map(([y, es]) =>
+      `<h2 class="text-2xl font-bold text-[#F9FAFB] mt-8 mb-1">${y}</h2>` +
+      es.map((e) => `<div class="py-2"><a class="text-[#F9FAFB]" href="/posts/${e.slug}">${esc(e.title)}</a> <span class="text-[#9CA3AF]">— ${esc(e.date)}</span></div>`).join('')
+    ).join('')
+  ),
+})
+
+// /about — from the file the React page imports, so the words match
+const about = JSON.parse(fs.readFileSync(path.join(root, 'src', 'data', 'about.json'), 'utf8'))
+writePage({
+  slug: 'about',
+  title: 'About',
+  description: about.lead,
+  body: shell(
+    `<h1 class="text-4xl font-bold text-[#F9FAFB] mb-6">About</h1>` +
+    `<p class="text-xl text-[#F9FAFB] mb-6">${esc(about.lead)}</p>` +
+    about.paragraphs.map((t) => `<p class="text-[#9CA3AF] mb-4 leading-relaxed">${esc(t)}</p>`).join('') +
+    `<h2 class="text-2xl font-bold text-[#F9FAFB] mt-8 mb-4">Roles</h2>` +
+    about.roles.map((r) => `<div class="mb-4"><div class="text-[#9CA3AF] text-sm">${esc(r.dates)}</div><div class="text-[#F9FAFB]"><strong>${esc(r.title)}</strong>, ${esc(r.org)}</div><div class="text-[#9CA3AF] text-sm">${esc(r.scope)}</div><div class="text-[#9CA3AF] text-sm">${esc(r.outcomes.join(' · '))}</div></div>`).join('') +
+    `<h2 class="text-2xl font-bold text-[#F9FAFB] mt-8 mb-4">Short bio</h2>` +
+    `<p class="text-[#9CA3AF] leading-relaxed">${esc(about.bio)}</p>`
+  ),
+})
+
 // sitemap + robots
 const newest = posts.map((p) => p.iso).filter(Boolean).sort().pop()
 const urls = [
   `  <url><loc>${SITE}/</loc>${newest ? `<lastmod>${newest}</lastmod>` : ''}</url>`,
+  `  <url><loc>${SITE}/all</loc>${newest ? `<lastmod>${newest}</lastmod>` : ''}</url>`,
+  `  <url><loc>${SITE}/about</loc></url>`,
   ...posts
     .slice()
     .sort((a, b) => (b.iso || '').localeCompare(a.iso || ''))
@@ -166,4 +223,4 @@ fs.writeFileSync(path.join(dist, 'robots.txt'), `User-agent: *\nAllow: /\n\nSite
 // default share image (the profile photo) at a stable, unhashed URL
 fs.copyFileSync(path.join(root, 'src', 'assets', 'images', 'rajnish.png'), path.join(dist, 'og-default.png'))
 
-console.log(`prerender: ${posts.length} posts → dist/posts/<slug>.html + /index.html, sitemap.xml, robots.txt, og-default.png`)
+console.log(`prerender: ${posts.length} posts + /all + /about → static HTML, sitemap.xml, robots.txt, og-default.png`)

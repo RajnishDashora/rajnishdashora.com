@@ -1,0 +1,52 @@
+{
+  "lead": "I'm an engineering leader and technology strategist, currently VP Engineering & Executive Director (India) at realfast.",
+  "paragraphs": [
+    "I build engineering organisations that ship AI where mistakes are expensive — regulated, audited, enterprise. Right now that's realfast, where I started the India engineering team at one person and it's now past fifty, and where we took SOC 2 Type II and ISO 27001 end to end.",
+    "Before that, six years at Gojek building the platforms a few thousand engineers deployed on — the kind of work where success looks like nobody noticing. Before that, McKinsey.",
+    "I still write code most weeks. The part of this job I enjoy most is when a system finally does the boring thing reliably: a deploy that takes five minutes instead of two weeks, or a harness that turns an agent from a slot machine into something you'd let near production."
+  ],
+  "writing": "Writing here since 2017, mostly on enterprise AI, harness engineering and engineering leadership.",
+  "bio": "Rajnish Dashora is VP Engineering & Executive Director (India) at realfast, where he built the India engineering organisation from the first hire past fifty and led SOC 2 Type II and ISO 27001 certification end to end. He previously ran cloud and mobile platforms at Gojek and was a digital analyst at McKinsey & Company. He writes on enterprise AI, harness engineering and engineering leadership.",
+  "roles": [
+    {
+      "dates": "Oct 2023 – present",
+      "title": "VP Engineering & Executive Director (India)",
+      "org": "realfast",
+      "scope": "Founding team · global delivery & growth P&L · India operations end to end",
+      "outcomes": [
+        "0 → 50+ India engineering org built",
+        "SOC 2 Type II + ISO 27001:2022 led end to end"
+      ]
+    },
+    {
+      "dates": "Aug 2020 – Jul 2023",
+      "title": "Head of Engineering, Cloud & Mobile Platforms",
+      "org": "Gojek / GoTo",
+      "scope": "60+ engineers · PaaS, developer tooling, SRE · mobile platform for 15+ apps",
+      "outcomes": [
+        "2 weeks → <5 min deploys (platform CLI, 500+ daily users)",
+        "1,000+ microservices at 99.9% uptime",
+        "25% cloud rate optimisation through FinOps"
+      ]
+    },
+    {
+      "dates": "Feb 2017 – Aug 2020",
+      "title": "Engineering Manager & Technology Lead",
+      "org": "Gojek",
+      "scope": "Supply marketplace — driver incentives & allocation",
+      "outcomes": [
+        "0 → 25+ cross-functional team built",
+        "90% fewer human errors through automation and a DSL"
+      ]
+    },
+    {
+      "dates": "Jul 2014 – Jan 2017",
+      "title": "Digital Analyst, Business Technology",
+      "org": "McKinsey & Company",
+      "scope": "Digital transformation for global clients",
+      "outcomes": [
+        "Self-service apps serving 1M+ telecom users"
+      ]
+    }
+  ]
+}

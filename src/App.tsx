@@ -1,24 +1,12 @@
 import { useEffect } from 'react'
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom'
-import Hero from './components/Hero'
-import About from './components/About'
-import Writing from './components/Writing'
-import Connect from './components/Connect'
+import Home from './pages/Home'
+import IndexPage from './pages/IndexPage'
+import AboutPage from './pages/AboutPage'
 import Footer from './components/Footer'
 import BlogPost from './components/BlogPost'
 import ThemeToggle from './components/ThemeToggle'
 import { trackPageView } from './utils/analytics'
-
-function HomePage() {
-  return (
-    <div className="min-h-screen">
-      <Hero />
-      <About />
-      <Writing />
-      <Connect />
-    </div>
-  )
-}
 
 function AppContent() {
   const location = useLocation()
@@ -28,11 +16,18 @@ function AppContent() {
     trackPageView(location.pathname + location.search)
   }, [location])
 
+  // Post pages manage their own scroll; everything else starts at the top.
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [location.pathname])
+
   return (
     <>
       <ThemeToggle />
       <Routes>
-        <Route path="/" element={<HomePage />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/all" element={<IndexPage />} />
+        <Route path="/about" element={<AboutPage />} />
         <Route path="/posts/:slug" element={<BlogPost />} />
       </Routes>
       <Footer />
