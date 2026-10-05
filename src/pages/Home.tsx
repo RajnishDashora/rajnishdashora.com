@@ -4,8 +4,6 @@ import Rail from '../components/Rail'
 import profileImage from '../assets/images/rajnish.png'
 import { entries, shortDate } from '../data/entries'
 
-const ORGS = ['realfast', 'Gojek / GoTo', 'McKinsey & Company']
-
 const Home = () => {
   const recent = entries.slice(0, 5)
   return (
@@ -27,28 +25,19 @@ const Home = () => {
             </div>
           </div>
 
-          {/* Short on purpose: Home introduces and points onward. The longer version is on About.
-              Deliberately free of current subjects — naming today's topics means rewriting this
-              paragraph every time the writing moves on. */}
+          {/* Short on purpose: Home introduces and points onward; the longer version is on About.
+              Timeless by design — no technology, no industry list, no current subjects, so it
+              doesn't need rewriting when the work or the writing moves on. Humble and
+              reading-first: the bio is context, the writing is the point. */}
           <p className="text-[19px] leading-relaxed text-fg max-w-[62ch]">
-            I'm Rajnish. I build engineering organisations that ship AI where mistakes are
-            expensive — currently VP Engineering at{' '}
+            I'm Rajnish. I build engineering teams and the platforms they run on — currently at{' '}
             <a href="https://www.realfast.ai" target="_blank" rel="noopener noreferrer" className="font-semibold text-accent hover:text-accent-hover transition-colors">realfast</a>,
             before that <span className="font-semibold">Gojek</span> and{' '}
-            <span className="font-semibold">McKinsey</span>. I still write code most weeks, and I write
-            here about the work: what it took, what it cost, and what I'd do differently.
+            <span className="font-semibold">McKinsey</span>. I write here mostly to work out what I
+            think: what made something reliable, what it cost, and what I'd do differently.
           </p>
 
-          <p className="text-sm text-muted mt-5">
-            {ORGS.map((o, i) => (
-              <span key={o}>
-                {i > 0 && <span className="mx-2">·</span>}
-                <span className="font-semibold text-fg">{o}</span>
-              </span>
-            ))}
-          </p>
-
-          <h2 className="text-xs uppercase tracking-[0.08em] text-muted mt-14 mb-4">Recent</h2>
+          <h2 className="text-xs uppercase tracking-[0.08em] text-muted mt-12 mb-4">Recent</h2>
           <div className="border-t border-line/10">
             {recent.map((e) => (
               <Link
