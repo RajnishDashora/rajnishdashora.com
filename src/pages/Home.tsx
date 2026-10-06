@@ -21,7 +21,7 @@ const Home = () => {
               <h1 className="text-4xl md:text-[2.75rem] font-bold tracking-tight text-fg leading-tight">
                 Rajnish Dashora
               </h1>
-              <p className="text-muted mt-1">VP Engineering &amp; Executive Director (India), realfast</p>
+              <p className="text-muted mt-1">VP Engineering, realfast</p>
             </div>
           </div>
 
